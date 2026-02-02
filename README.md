@@ -1,9 +1,38 @@
 # Claude spinner verbs
 
+## Get claude
+
 Get the [claude cli](https://code.claude.com/docs/en/overview)
 
 ```
 brew install --cask claude-code
+```
+
+## Update settings
+
+To update spinner verbs edit settings ... 
+
+```
+# globally
+~/.claude/settings.json
+```
+
+```
+# or for a single project
+[project-root]/.claude/settings.json
+```
+
+and include
+
+```
+{
+  "spinnerVerbs": {
+    "mode": "replace",  # or append
+    "verbs": [
+      "the verbs"
+    ]
+  }
+}
 ```
 
 ## Doc Emrick
