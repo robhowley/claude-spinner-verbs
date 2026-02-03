@@ -9,7 +9,7 @@ if [ -z "$1" ]; then
 fi
 
 FILENAME="$1"
-GITHUB_URL="https://raw.githubusercontent.com/robhowley/claude-spinner-verbs/main/${FILENAME}.json"
+GITHUB_URL="https://raw.githubusercontent.com/robhowley/claude-spinner-verbs/main/spinner-verbs/${FILENAME}.json"
 SETTINGS_FILE=".claude/settings.json"
 TEMP_FILE=$(mktemp)
 
