@@ -10,6 +10,8 @@ brew install --cask claude-code
 
 ## Update settings
 
+### Manually
+
 To update spinner verbs edit settings ... 
 
 ```
@@ -34,6 +36,18 @@ and include
   }
 }
 ```
+
+### Via script
+
+```shell
+curl -sL https://raw.githubusercontent.com/robhowley/claude-spinner-verbs/main/update-spinner-verbs.sh | bash -s <filename>
+```
+
+where `<filename>` is the basename of any spinner verb json file, e.g. `game-of-thrones`
+
+## Game of Thrones
+
+Claude has taken the black. Less "Thinking...", more "Paying the iron price."
 
 ## Doc Emrick
 
