@@ -35,6 +35,10 @@ and include
 }
 ```
 
+## Game of Thrones
+
+Claude has taken the black. Less "Thinking...", more "Paying the iron price."
+
 ## Doc Emrick
 
 Legendary hockey play by play announcer with an impressive collection of synonyms for "pass". The source material for his linguistic prowess
