@@ -33,7 +33,7 @@ Can be `fired` into Claude spinner verbs when it's "thinking":
 If you use [pi](https://pi.dev), install this as a pi package directly from GitHub:
 
 ```shell
-pi install robhowley/claude-spinner-verbs
+pi install git:github.com/robhowley/claude-spinner-verbs
 ```
 
 That's it. The extension registers automatically and picks up your configuration on the next session start.
