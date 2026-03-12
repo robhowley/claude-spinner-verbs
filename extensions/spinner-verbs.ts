@@ -44,8 +44,13 @@ export default function (pi: ExtensionAPI) {
       const filtered = items.filter((i) => i.value.startsWith(prefix));
       return filtered.length > 0 ? filtered : null;
     },
-    handler: async (_args, ctx) => {
-      const choice = await ctx.ui.select("Spinner verbs:", [...available, "(default)"]);
+    handler: async (args, ctx) => {
+      const arg = args?.trim();
+      if (arg && arg !== "(default)" && !available.includes(arg)) {
+        ctx.ui.notify(`Unknown verb list: ${arg}. Available: ${[...available, "(default)"].join(", ")}`, "error");
+        return;
+      }
+      const choice = arg || await ctx.ui.select("Spinner verbs:", [...available, "(default)"]);
       if (!choice) return;
       if (choice === "(default)") {
         clearInterval(interval);
