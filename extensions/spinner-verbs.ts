@@ -12,7 +12,8 @@ export default function (pi: ExtensionAPI) {
     .map((f) => basename(f, ".json"));
 
   function loadVerbs(name: string): string[] {
-    return JSON.parse(readFileSync(join(verbsDir, `${name}.json`), "utf-8"));
+    const data = JSON.parse(readFileSync(join(verbsDir, `${name}.json`), "utf-8"));
+    return data?.spinnerVerbs?.verbs ?? data;
   }
 
   pi.registerFlag("verbs", {
