@@ -22,6 +22,60 @@ Can be `fired` into Claude spinner verbs when it's "thinking":
 
 <img width="191" height="64" alt="image" src="https://github.com/user-attachments/assets/40146d06-3189-44f6-af50-1a01c3433988" />
 
+## Pi Integration
+
+If you use [pi](https://github.com/mariozechner/pi), you can install this directly as a pi package from GitHub — no shell script required.
+
+### Install from GitHub
+
+```shell
+pi install robhowley/claude-spinner-verbs
+```
+
+This registers the extension automatically. Pi will pick up your verb configuration on the next session start.
+
+### `/verbs` Command
+
+Switch to a premade verb list at any time during a session using the `/verbs` command:
+
+```
+/verbs game-of-thrones
+/verbs doc-emrick
+/verbs (default)
+```
+
+Running `/verbs` without an argument opens an interactive picker. `(default)` restores Claude's built-in spinner text.
+
+### Configuration via `settings.json`
+
+You can set verbs automatically on session start via your pi settings file (project-local at `.pi/settings.json` or global at `~/.pi/agent/settings.json`).
+
+**Use a premade theme by name:**
+
+```json
+{
+  "spinnerVerbs": "game-of-thrones"
+}
+```
+
+**Use a custom JSON file:**
+
+```json
+{
+  "spinnerVerbsFile": "~/my-verbs.json"
+}
+```
+
+The file at `spinnerVerbsFile` can be a plain JSON array of strings, or the same `spinnerVerbs` object format used by Claude Code settings:
+
+```json
+["Brewing coffee...", "Asking the oracle...", "Consulting the void..."]
+```
+
+Project settings take priority over global settings. The `--verbs` flag (e.g. `pi --verbs game-of-thrones`) takes priority over both.
+
+---
+
 ## Quick Start
 
 Install a theme with one command:
