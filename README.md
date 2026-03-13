@@ -8,23 +8,7 @@ Customize the text that appears while Claude is working. Replace the default spi
 
 **After**: "Paying the iron price...", "With fire and blood..." ⚔️🐉
 
----
-
-## Available Themes
-
-### ⚔️ Game of Thrones
-
-Claude has taken the black. Less "Thinking...", more "Guarding the realms of men."
-
-### 🏒 Doc Emrick
-
-Legendary NHL play-by-play announcer with an almost supernatural collection of synonyms for "pass." The source material:
-
-<img width="630" height="500" alt="image" src="https://github.com/user-attachments/assets/fc8aa08f-68a1-4a4f-a9c3-5828ef699621" />
-
-Can be `fired` into Claude spinner verbs when it's "thinking":
-
-<img width="191" height="64" alt="image" src="https://github.com/user-attachments/assets/40146d06-3189-44f6-af50-1a01c3433988" />
+All availble themes can be viewed in [/spinner-verbs](https://github.com/robhowley/claude-spinner-verbs/tree/main/spinner-verbs)
 
 ---
 
