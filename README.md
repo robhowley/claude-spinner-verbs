@@ -17,7 +17,7 @@ All availble themes can be viewed in [/spinner-verbs](https://github.com/robhowl
 If you use [pi](https://pi.dev), install this as a pi package directly from GitHub:
 
 ```shell
-pi install npm:claude-spinner-verbs
+pi install npm:@robhowley/claude-spinner-verbs
 ```
 
 Or directly from GitHub:
