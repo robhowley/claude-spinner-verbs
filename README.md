@@ -70,6 +70,16 @@ Set your preferred theme once and forget about it. Pi checks both project-local 
 }
 ```
 
+The path supports three forms and is resolved relative to the `settings.json` file that contains it — not relative to your working directory:
+
+| Form | Example | Resolved as |
+|------|---------|-------------|
+| `~/...` | `~/my-verbs.json` | Expanded from your home directory |
+| `/absolute/...` | `/etc/my-verbs.json` | Used as-is |
+| `relative/...` | `../my-verbs.json` | Relative to the `settings.json` file's directory |
+
+So if your `.pi/settings.json` contains `"spinnerVerbsFile": "../my-verbs.json"`, it resolves to `my-verbs.json` in the project root — not wherever you launched pi from.
+
 Your custom file can be a plain JSON array:
 
 ```json
