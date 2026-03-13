@@ -55,7 +55,11 @@ export default function (pi: ExtensionAPI) {
 
     const filePath = settings.spinnerVerbsFile;
     if (typeof filePath === "string") {
-      const resolved = filePath.startsWith("~") ? join(homedir(), filePath.slice(1)) : filePath;
+      const resolved = filePath.startsWith("~")
+        ? join(homedir(), filePath.slice(1))
+        : filePath.startsWith("/")
+        ? filePath
+        : join(dirname(settingsPath), filePath);
       if (existsSync(resolved)) {
         try {
           const data = JSON.parse(readFileSync(resolved, "utf-8"));
