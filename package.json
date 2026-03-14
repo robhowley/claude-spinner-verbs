@@ -1,6 +1,6 @@
 {
   "name": "@robhowley/spinner-verbs",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Replace boring LLM spinner verbs with themes that have a little more personality.",
   "author": "Rob Howley",
   "license": "MIT",
