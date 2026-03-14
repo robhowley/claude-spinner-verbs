@@ -8,7 +8,7 @@ Customize the text that appears while Claude is working. Replace the default spi
 
 **After**: "Paying the iron price...", "With fire and blood..." ⚔️🐉
 
-All availble themes can be viewed in [/spinner-verbs](https://github.com/robhowley/claude-spinner-verbs/tree/main/spinner-verbs)
+All availble themes can be viewed in [/spinner-verbs](https://github.com/robhowley/spinner-verbs/tree/main/spinner-verbs)
 
 ---
 
@@ -17,13 +17,13 @@ All availble themes can be viewed in [/spinner-verbs](https://github.com/robhowl
 If you use [pi](https://pi.dev), install this as a pi package directly from GitHub:
 
 ```shell
-pi install npm:@robhowley/claude-spinner-verbs
+pi install npm:@robhowley/spinner-verbs
 ```
 
 Or directly from GitHub:
 
 ```shell
-pi install git:github.com/robhowley/claude-spinner-verbs
+pi install git:github.com/robhowley/spinner-verbs
 ```
 
 That's it. The extension registers automatically and picks up your configuration on the next session start.
@@ -87,7 +87,7 @@ Your custom file can be a plain JSON array:
 Install any theme with a single command:
 
 ```shell
-curl -sL https://raw.githubusercontent.com/robhowley/claude-spinner-verbs/main/update-spinner-verbs.sh | bash -s game-of-thrones
+curl -sL https://raw.githubusercontent.com/robhowley/spinner-verbs/main/update-spinner-verbs.sh | bash -s game-of-thrones
 ```
 
 Replace `game-of-thrones` with any theme name from the [`/spinner-verbs`](./spinner-verbs) directory.
