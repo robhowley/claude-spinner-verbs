@@ -1,8 +1,12 @@
 {
   "name": "@robhowley/claude-spinner-verbs",
-  "version": "1.0.0",
-  "keywords": ["pi-package"],
+  "version": "1.0.1",
+  "keywords": [
+    "pi-package"
+  ],
   "pi": {
-    "extensions": ["./extensions"]
+    "extensions": [
+      "./extensions"
+    ]
   }
 }
