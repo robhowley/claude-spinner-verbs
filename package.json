@@ -1,6 +1,6 @@
 {
   "name": "@robhowley/spinner-verbs",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Replace boring LLM spinner verbs with themes that have a little more personality.",
   "keywords": [
     "pi-package"
