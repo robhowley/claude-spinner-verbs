@@ -13,11 +13,17 @@ export default function (pi: ExtensionAPI) {
     .map((f) => basename(f, ".json"));
 
   const DEFAULT = "(default)";
-  const availableWithDefault = [...available, DEFAULT];
+  const RANDOM = "random";
+  const availableWithDefault = [...available, RANDOM, DEFAULT];
 
   function loadVerbs(name: string): string[] {
     const data = JSON.parse(readFileSync(join(verbsDir, `${name}.json`), "utf-8"));
     return data?.spinnerVerbs?.verbs ?? data;
+  }
+
+  function randomVerbs(): string[] {
+    const name = available[Math.floor(Math.random() * available.length)];
+    return loadVerbs(name);
   }
 
   pi.registerFlag("verbs", {
@@ -49,8 +55,9 @@ export default function (pi: ExtensionAPI) {
     if (!settings) return undefined;
 
     const named = settings.spinnerVerbs;
-    if (typeof named === "string" && available.includes(named)) {
-      return loadVerbs(named);
+    if (typeof named === "string") {
+      if (named === RANDOM) return randomVerbs();
+      if (available.includes(named)) return loadVerbs(named);
     }
 
     const filePath = settings.spinnerVerbsFile;
@@ -79,8 +86,9 @@ export default function (pi: ExtensionAPI) {
 
     let verbs: string[] | undefined;
 
-    if (flag && flag !== "(default)" && available.includes(flag)) {
-      verbs = loadVerbs(flag);
+    if (flag && flag !== DEFAULT) {
+      if (flag === RANDOM) verbs = randomVerbs();
+      else if (available.includes(flag)) verbs = loadVerbs(flag);
     }
 
     verbs ??= resolveVerbs(projectSettings) ?? resolveVerbs(globalSettings);
@@ -98,7 +106,7 @@ export default function (pi: ExtensionAPI) {
     },
     handler: async (args, ctx) => {
       const arg = args?.trim();
-      if (arg && arg !== DEFAULT && !available.includes(arg)) {
+      if (arg && arg !== DEFAULT && arg !== RANDOM && !available.includes(arg)) {
         ctx.ui.notify(`Unknown verb list: ${arg}. Available: ${availableWithDefault.join(", ")}`, "error");
         return;
       }
@@ -108,6 +116,9 @@ export default function (pi: ExtensionAPI) {
         clearInterval(interval);
         ctx.ui.setWorkingMessage();
         ctx.ui.notify("Restored default spinner", "info");
+      } else if (choice === RANDOM) {
+        activate(randomVerbs(), ctx);
+        ctx.ui.notify("Spinner: random", "info");
       } else {
         activate(loadVerbs(choice), ctx);
         ctx.ui.notify(`Spinner: ${choice}`, "info");
