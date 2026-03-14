@@ -2,6 +2,10 @@
   "name": "@robhowley/spinner-verbs",
   "version": "2.1.0",
   "description": "Replace boring LLM spinner verbs with themes that have a little more personality.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robhowley/spinner-verbs"
+  },
   "keywords": [
     "pi-package"
   ],
