@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check-themes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check all themes are documented in README
+        run: |
+          missing=()
+          for file in spinner-verbs/*.json; do
+            theme=$(basename "$file" .json)
+            if ! grep -q "\`${theme}\`" README.md; then
+              missing+=("$theme")
+            fi
+          done
+
+          if [[ ${#missing[@]} -gt 0 ]]; then
+            echo "ERROR: The following themes are missing from the README Available Themes table:"
+            for theme in "${missing[@]}"; do
+              echo "  - $theme"
+            done
+            exit 1
+          fi
+
+          echo "All themes are documented in README."
