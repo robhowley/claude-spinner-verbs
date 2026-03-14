@@ -1,14 +1,18 @@
-# Claude Spinner Verbs
+# Spinner Verbs
 
 > "Thinking..." is the most boring thing a genius could say.
 
-Customize the text that appears while Claude is working. Replace the default spinner verbs with something that has a little more personality.
+Customize the text that appears while the LLM is working. Replace the default spinner verbs with something that has a little more personality.
 
 **Before**: "Thinking...", "Processing...", "Working..." 🥱
 
 **After**: "Paying the iron price...", "With fire and blood..." ⚔️🐉
 
-All availble themes can be viewed in [/spinner-verbs](https://github.com/robhowley/spinner-verbs/tree/main/spinner-verbs)
+## Choose Your Integration
+
+- **Using [pi](https://pi.dev)?** → [Pi Integration](#pi-integration)
+- **Using Claude Code?** → [Claude Code Integration](#claude-code-integration)
+- **Browse themes** → [Available Themes](#available-themes)
 
 ---
 
@@ -125,3 +129,16 @@ Add the spinner verbs configuration:
 **Modes**:
 - `"replace"` — swap out the defaults entirely
 - `"append"` — add your verbs alongside the defaults
+
+---
+
+## Available Themes
+
+| Theme | Sample                                                        |
+|-------|---------------------------------------------------------------|
+| `game-of-thrones` | Taking the black..., Winter is coming..., By your leave...    |
+| `lord-of-the-rings` | One does not simply..., You shall not pass..." So it begins... |
+| `action-movie` | Yippee-ki-yay..., I'll be back..., I know kung fu...          |
+| `game-show` | Come on down..., Survey says..., Is that your final answer... |
+| `doc-emrick` | Shunting..., Sliding..., Fiddling...                          |
+| `momentum` | Making moves..., Spinning up..., Getting traction...          |
