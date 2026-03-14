@@ -2,13 +2,28 @@
   "name": "@robhowley/spinner-verbs",
   "version": "2.1.0",
   "description": "Replace boring LLM spinner verbs with themes that have a little more personality.",
+  "author": "Rob Howley",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/robhowley/spinner-verbs"
   },
+  "homepage": "https://github.com/robhowley/spinner-verbs",
+  "bugs": {
+    "url": "https://github.com/robhowley/spinner-verbs/issues"
+  },
   "keywords": [
     "pi-package"
   ],
+  "files": [
+    "extensions",
+    "spinner-verbs",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "pi": {
     "extensions": [
       "./extensions"
