@@ -15,10 +15,18 @@ export default function (pi: ExtensionAPI) {
   const DEFAULT = "(default)";
   const RANDOM = "random";
   const availableWithDefault = [...available, RANDOM, DEFAULT];
+  const validChoices = new Set(availableWithDefault);
+
+  function parseVerbsData(data: unknown): string[] | undefined {
+    const verbs = (data as any)?.spinnerVerbs?.verbs ?? data;
+    return Array.isArray(verbs) && verbs.length > 0 ? verbs : undefined;
+  }
 
   function loadVerbs(name: string): string[] {
     const data = JSON.parse(readFileSync(join(verbsDir, `${name}.json`), "utf-8"));
-    return data?.spinnerVerbs?.verbs ?? data;
+    const verbs = parseVerbsData(data);
+    if (!verbs) throw new Error(`Failed to parse verbs from ${name}.json`);
+    return verbs;
   }
 
   function randomVerbs(): string[] {
@@ -29,16 +37,16 @@ export default function (pi: ExtensionAPI) {
   pi.registerFlag("verbs", {
     description: `Spinner verb list (${available.join(", ")})`,
     type: "string",
-    default: "(default)",
+    default: DEFAULT,
   });
 
   let interval: ReturnType<typeof setInterval> | undefined;
 
   function activate(verbs: string[], ctx: ExtensionContext) {
     clearInterval(interval);
-    const pick = () => verbs[Math.floor(Math.random() * verbs.length)];
-    ctx.ui.setWorkingMessage(`${pick()}...`);
-    interval = setInterval(() => ctx.ui.setWorkingMessage(`${pick()}...`), 3000);
+    const tick = () => ctx.ui.setWorkingMessage(`${verbs[Math.floor(Math.random() * verbs.length)]}...`);
+    tick();
+    interval = setInterval(tick, 3000);
   }
 
   function readSettings(settingsPath: string): Record<string, unknown> | undefined {
@@ -69,9 +77,8 @@ export default function (pi: ExtensionAPI) {
         : join(dirname(settingsPath), filePath);
       if (existsSync(resolved)) {
         try {
-          const data = JSON.parse(readFileSync(resolved, "utf-8"));
-          const verbs = data?.spinnerVerbs?.verbs ?? data;
-          if (Array.isArray(verbs) && verbs.length > 0) return verbs;
+          const verbs = parseVerbsData(JSON.parse(readFileSync(resolved, "utf-8")));
+          if (verbs) return verbs;
         } catch {}
       }
     }
@@ -106,7 +113,7 @@ export default function (pi: ExtensionAPI) {
     },
     handler: async (args, ctx) => {
       const arg = args?.trim();
-      if (arg && arg !== DEFAULT && arg !== RANDOM && !available.includes(arg)) {
+      if (arg && !validChoices.has(arg)) {
         ctx.ui.notify(`Unknown verb list: ${arg}. Available: ${availableWithDefault.join(", ")}`, "error");
         return;
       }
