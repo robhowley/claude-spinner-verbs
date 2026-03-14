@@ -30,7 +30,7 @@ Or directly from GitHub:
 pi install git:github.com/robhowley/spinner-verbs
 ```
 
-That's it. The extension registers automatically and picks up your configuration on the next session start.
+That's it. The extension registers automatically and on the next session start will randomly pick a theme for you.
 
 ### Switching Themes with `/verbs`
 
@@ -39,16 +39,25 @@ Change your verb list at any time during a session:
 ```
 /verbs game-of-thrones
 /verbs doc-emrick
+/verbs random
 /verbs (default)
 ```
 
-Run `/verbs` with no argument to get an interactive picker. Use `(default)` to restore Claude's built-in spinner.
+Run `/verbs` with no argument to get an interactive picker. Use `random` to pick a new random theme, or `(default)` to restore Claude's built-in spinner.
 
 ### Auto-configure via `settings.json`
 
 Set your preferred theme once and forget about it. Pi checks both project-local (`.pi/settings.json`) and global (`~/.pi/agent/settings.json`) settings on session start.
 
-**Use a built-in theme by name:**
+**Randomly pick a theme each session (default):**
+
+```json
+{
+  "spinnerVerbs": "random"
+}
+```
+
+**Use a specific built-in theme by name:**
 
 ```json
 {
@@ -142,3 +151,5 @@ Add the spinner verbs configuration:
 | `game-show` | Come on down..., Survey says..., Is that your final answer... |
 | `doc-emrick` | Shunting..., Sliding..., Fiddling...                          |
 | `momentum` | Making moves..., Spinning up..., Getting traction...          |
+
+Use `"spinnerVerbs": "random"` to have a theme randomly selected from the list above at each session start.
