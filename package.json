@@ -1,5 +1,5 @@
 {
-  "name": "claude-spinner-verbs",
+  "name": "@robhowley/claude-spinner-verbs",
   "version": "1.0.0",
   "keywords": ["pi-package"],
   "pi": {
