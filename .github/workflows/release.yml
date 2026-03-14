@@ -51,4 +51,4 @@ jobs:
 
       - name: Publish to npm
         if: steps.bump.outputs.new_version != ''
-        run: npm publish --access public
+        run: npm publish
