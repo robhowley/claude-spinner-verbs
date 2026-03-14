@@ -42,8 +42,13 @@ jobs:
       - uses: actions/setup-node@v4
         if: steps.bump.outputs.new_version != ''
         with:
-          node-version: '20'
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update npm
+        if: steps.bump.outputs.new_version != ''
+        run: npm install -g npm@latest
 
       - name: Publish to npm
         if: steps.bump.outputs.new_version != ''
-        run: npm publish --provenance --access public
+        run: npm publish --access public
